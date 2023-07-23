@@ -40,7 +40,7 @@ echo "Chrooting into new environment"
 arch-chroot /mnt /bin/bash << EOT
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
---------------------------------- Finish this part here ---------------------------------
+sed -i 's/\#en_US/en_US/' /etc/locale.gen
 locale-gen
 
 touch /etc/locale.conf
@@ -48,7 +48,7 @@ echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
 touch /etc/hostname
 echo 'arch' > /etc/hostname
---------------------------------- Once the locale-gen stuff is figured out do hosts too ---------------------------------
+echo '127.0.0.1  localhost' > /etc/hosts
 
 mkinitcpio -P
 
