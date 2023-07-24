@@ -30,7 +30,7 @@ swapon $swap_partition
 echo "Updating mirror list"
 reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
 
-pacstrap -K /mnt base base-devel linux linux-firmware e2fsprogs networkmanager vim man-db man-pages texinfo
+pacstrap -K /mnt base base-devel linux linux-firmware e2fsprogs networkmanager man-db man-pages texinfo
 
 
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -52,11 +52,22 @@ echo '127.0.0.1  localhost' > /etc/hosts
 
 mkinitcpio -P
 
-passwd $root_pass
+useradd -m -G wheel $username
+
+echo root:$root_pass | chpasswd
+echo $username:$password | chpasswd
+
+pacman -Syu --noconfirm
 
 pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+
+pacman -S qtile ly helix git alsa-utils libreoffice-still fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code --noconfirm
+
+systemctl enable NetworkManager.service
+systemctl enable ly.service
+
 exit
 EOT
 
