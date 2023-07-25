@@ -71,10 +71,10 @@ systemctl enable vboxservice.service
 
 su $username << EOF
 cd ~
-echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> ~/.bashrc
+echo "alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'" >> ~/.bashrc
 echo ".cfg" >> .gitignore
-git clone --bare git@github.com:TwoStarLightMints/dotfiles.git $HOME/.cfg
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+git clone --bare git@github.com:TwoStarLightMints/dotfiles.git ~/.cfg
+alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'
 rm -rf ~/.config/*
 config checkout
 config config --local status.showUntrackedFiles no
