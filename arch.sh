@@ -74,10 +74,9 @@ cd ~
 echo "alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'" >> ~/.bashrc
 echo ".cfg" >> .gitignore
 git clone --bare https://github.com/TwoStarLightMints/dotfiles.git ~/.cfg
-alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'
 rm -rf ~/.config/*
-config checkout
-config config --local status.showUntrackedFiles no
+/usr/bin/git --git-dir=~/.cfg/ --work-tree=~ checkout
+/usr/bin/git --git-dir=~/.cfg/ --work-tree=~ config --local status.showUntrackedFiles no
 EOF
 
 exit
