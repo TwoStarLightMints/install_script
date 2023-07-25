@@ -73,7 +73,7 @@ su $username << EOF
 cd ~
 echo "alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'" >> ~/.bashrc
 echo ".cfg" >> .gitignore
-git clone --bare git@github.com:TwoStarLightMints/dotfiles.git ~/.cfg
+git clone --bare https://github.com/TwoStarLightMints/dotfiles.git ~/.cfg
 alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'
 rm -rf ~/.config/*
 config checkout
