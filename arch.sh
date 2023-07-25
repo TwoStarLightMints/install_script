@@ -15,6 +15,30 @@ efi_partition="$device"1
 swap_partition="$device"2
 root_partition="$device"3
 
+fdisk $device << EOT
+g
+n
+
+
++350M
+t
+1
+n
+
+
++2G
+t
+
+19
+n
+
+
+
+t
+23
+w
+EOT
+
 fdisk $device
 
 echo "Formatting partitions"
