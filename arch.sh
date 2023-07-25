@@ -15,32 +15,32 @@ efi_partition="$device"1
 swap_partition="$device"2
 root_partition="$device"3
 
-fdisk $device << EOT
-g
-n
+echo -e "gn\n\n+350Mt1n\n\n+2Gt\n19n\n\n\nt\n23w" | fdisk $device
 
-
-+350M
-t
-1
-n
-
-
-+2G
-t
-
-19
-n
-
-
-
-t
-
-23
-w
-EOT
-
-fdisk $device
+#fdisk $device << EOT
+#g
+#n
+#
+#
+#+350M
+#t
+#1
+#n
+#
+#
+#+2G
+#t
+#
+#19
+#n
+#
+#
+#
+#t
+#
+#23
+#w
+#EOT
 
 echo "Formatting partitions"
 mkfs.ext4 $root_partition
