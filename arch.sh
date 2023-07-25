@@ -15,32 +15,7 @@ efi_partition="$device"1
 swap_partition="$device"2
 root_partition="$device"3
 
-echo -e "gn\n\n+350Mt1n\n\n+2Gt\n19n\n\n\nt\n23w" | fdisk $device
-
-#fdisk $device << EOT
-#g
-#n
-#
-#
-#+350M
-#t
-#1
-#n
-#
-#
-#+2G
-#t
-#
-#19
-#n
-#
-#
-#
-#t
-#
-#23
-#w
-#EOT
+echo -e "label:gpt\n,350M,U\n,2G,S\n,+,L" | sfdisk $device
 
 echo "Formatting partitions"
 mkfs.ext4 $root_partition
