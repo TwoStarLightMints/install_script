@@ -1,12 +1,12 @@
 #!/bin/bash 
 
 echo "Please enter your desired root password:"
-read root_pass
+read -s root_pass
 
 echo "Please enter your desired username:"
 read username
 echo "And now your password for this user:"
-read password
+read -s password
 
 echo "Please enter the device name that will be used for partitioning:"
 read device
