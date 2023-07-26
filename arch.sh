@@ -81,7 +81,7 @@ su -l $username
 cd ~
 eval "$(ssh-agent)"
 ssh-keygen -t ed25519 -f $HOME/.ssh/id_ed25519
-ssh-add $HOME/.ssh/ed25519
+ssh-add $HOME/.ssh/id_ed25519
 echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
 echo ".cfg" >> .gitignore
 git clone --bare git@github.com:TwoStarLightMints/dotfiles.git $HOME/.cfg
