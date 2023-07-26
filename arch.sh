@@ -80,7 +80,7 @@ systemctl enable vboxservice.service
 su $username
 cd ~
 eval "$(ssh-agent)"
-ssh-keygen -t ed25519 /home/$username/.ssh
+ssh-keygen -t ed25519 -f /home/$username/.ssh/ed25519
 ssh-add /home/$username/.ssh/ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
