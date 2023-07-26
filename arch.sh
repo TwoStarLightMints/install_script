@@ -77,7 +77,7 @@ systemctl enable NetworkManager.service
 systemctl enable ly.service
 systemctl enable vboxservice.service
 
-su $username
+su -l $username
 cd ~
 eval "$(ssh-agent)"
 ssh-keygen -t ed25519 -f /home/$username/.ssh/ed25519
