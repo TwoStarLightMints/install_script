@@ -80,14 +80,14 @@ systemctl enable vboxservice.service
 su -l $username
 cd ~
 eval "$(ssh-agent)"
-ssh-keygen -t ed25519 -f /home/$username/.ssh/id_ed25519
-ssh-add /home/$username/.ssh/ed25519
-echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
+ssh-keygen -t ed25519 -f $HOME/.ssh/id_ed25519
+ssh-add $HOME/.ssh/ed25519
+echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
 echo ".cfg" >> .gitignore
-git clone --bare git@github.com:TwoStarLightMints/dotfiles.git /home/$username/.cfg
-rm -rf /home/$username/.config/*
-/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
-/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
+git clone --bare git@github.com:TwoStarLightMints/dotfiles.git $HOME/.cfg
+rm -rf $HOME/.config/*
+/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME checkout
+/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME config --local status.showUntrackedFiles no
 exit
 
 exit
