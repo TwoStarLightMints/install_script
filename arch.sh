@@ -1,4 +1,4 @@
-#!/bin/bash 
+ #!/bin/bash 
 
 echo "Please enter your desired root password:"
 read -s root_pass
@@ -78,6 +78,8 @@ systemctl enable ly.service
 systemctl enable vboxservice.service
 
 su -l $username
+echo whoami
+echo $HOME
 cd ~
 eval "$(ssh-agent)"
 ssh-keygen -t ed25519 -f $HOME/.ssh/id_ed25519
