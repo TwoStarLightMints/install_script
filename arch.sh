@@ -85,7 +85,11 @@ ssh-add /home/$username/.ssh/id_ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
 git clone --bare https://github.com/TwoStarLightMints/dotfiles.git /home/$username/.cfg
-rm -rf /home/$username/.config/*
+
+mkdir -p .config-backup && \
+config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | \
+xargs -I{} mv {} .config-backup/{}
+
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
 exit
