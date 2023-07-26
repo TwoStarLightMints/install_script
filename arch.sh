@@ -11,6 +11,9 @@ read -s password
 echo "Please enter the device name that will be used for partitioning:"
 read device
 
+echo "Please enter your email for getting the config files:"
+read email
+
 efi_partition="$device"1
 swap_partition="$device"2
 root_partition="$device"3
@@ -71,6 +74,9 @@ systemctl enable vboxservice.service
 
 su $username << EOF
 cd ~
+ssh-keygen -t ed25519 -C "$email"
+eval "$(ssh-agent)"
+ssh-add /home/$username/.ssh/ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
 git clone --bare git@github.com:TwoStarLightMints/dotfiles.git /home/$username/.cfg
