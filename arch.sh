@@ -84,7 +84,7 @@ ssh-keygen -t ed25519 -f /home/$username/.ssh/id_ed25519
 ssh-add /home/$username/.ssh/id_ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
-git clone --bare git@github.com:TwoStarLightMints/dotfiles.git /home/$username/.cfg
+git clone --bare https://github.com/TwoStarLightMints/dotfiles.git /home/$username/.cfg
 rm -rf /home/$username/.config/*
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
