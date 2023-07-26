@@ -72,8 +72,10 @@ systemctl enable NetworkManager.service
 systemctl enable ly.service
 systemctl enable vboxservice.service
 
-su $username << EOF
+su $username
 cd ~
+echo $HOME
+read
 ssh-keygen -t ed25519 -C "$email"
 eval "$(ssh-agent)"
 ssh-add /home/$username/.ssh/ed25519
@@ -83,7 +85,7 @@ git clone --bare git@github.com:TwoStarLightMints/dotfiles.git /home/$username/.
 rm -rf /home/$username/.config/*
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
-EOF
+exit
 
 exit
 EOT
