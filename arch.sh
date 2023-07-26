@@ -14,6 +14,9 @@ read device
 echo "Please enter your email for getting the config files:"
 read email
 
+echo "Is this debug?"
+read debug
+
 efi_partition="$device"1
 swap_partition="$device"2
 root_partition="$device"3
@@ -30,8 +33,10 @@ mount $root_partition /mnt
 mount --mkdir $efi_partition /mnt/boot
 swapon $swap_partition
 
-echo "Updating mirror list"
-reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
+if [ $debug != "y" ]; then
+  echo "Updating mirror list"
+  reflector --latest 200 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist
+fi
 
 pacstrap -K /mnt base base-devel linux linux-firmware e2fsprogs networkmanager man-db man-pages texinfo
 
@@ -74,9 +79,7 @@ systemctl enable vboxservice.service
 
 su $username
 cd ~
-echo $HOME
-read
-ssh-keygen -t ed25519 -C "$email"
+ssh-keygen -t ed25519
 eval "$(ssh-agent)"
 ssh-add /home/$username/.ssh/ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
