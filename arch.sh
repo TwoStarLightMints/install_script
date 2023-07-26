@@ -63,7 +63,7 @@ pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code xorg virtualbox-guest-utils --noconfirm
+pacman -S qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code xorg virtualbox-guest-utils openssh --noconfirm
 
 systemctl enable NetworkManager.service
 systemctl enable ly.service
@@ -71,12 +71,12 @@ systemctl enable vboxservice.service
 
 su $username << EOF
 cd ~
-echo "alias config='/usr/bin/git --git-dir=~/.cfg/ --work-tree=~'" >> ~/.bashrc
+echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
-git clone --bare https://github.com/TwoStarLightMints/dotfiles.git ~/.cfg
-rm -rf ~/.config/*
-/usr/bin/git --git-dir=~/.cfg/ --work-tree=~ checkout
-/usr/bin/git --git-dir=~/.cfg/ --work-tree=~ config --local status.showUntrackedFiles no
+git clone --bare git@github.com:TwoStarLightMints/dotfiles.git /home/$username/.cfg
+rm -rf /home/$username/.config/*
+/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
+/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
 EOF
 
 exit
