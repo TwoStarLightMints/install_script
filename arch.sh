@@ -1,22 +1,18 @@
  #!/bin/bash 
 
-#echo "Please enter your desired root password:"
-#read -s root_pass
 read -sp "Please enter your desired root password: " root_pass
+echo
 
-echo "Please enter your desired username:"
-read username
-echo "And now your password for this user:"
-read -s password
+read -p "Please enter your desired username: " username
+read -sp "And now your password for this user: " password
+echo
 
-echo "Please enter your desired git passphrase:"
-read -s git_pass
+read -sp "Please enter your desired git passphrase: " git_pass
+echo
 
-echo "Please enter the device name that will be used for partitioning:"
-read device
+read -p "Please enter the device name that will be used for partitioning: " device
 
-echo "Is this debug?"
-read debug
+read -p "Is this debug? [y/n]" debug
 
 efi_partition="$device"1
 swap_partition="$device"2
