@@ -1,18 +1,19 @@
  #!/bin/bash 
 
-echo "Please enter your desired root password:"
-read -s root_pass
+#echo "Please enter your desired root password:"
+#read -s root_pass
+read -sp "Please enter your desired root password: "
 
 echo "Please enter your desired username:"
 read username
 echo "And now your password for this user:"
 read -s password
 
+echo "Please enter your desired git passphrase:"
+read -s git_pass
+
 echo "Please enter the device name that will be used for partitioning:"
 read device
-
-echo "Please enter your email for getting the config files:"
-read email
 
 echo "Is this debug?"
 read debug
@@ -80,7 +81,7 @@ systemctl enable vboxservice.service
 su -l $username
 cd ~
 eval "$(ssh-agent)"
-ssh-keygen -t ed25519 -f /home/$username/.ssh/id_ed25519
+ssh-keygen -t ed25519 -f /home/$username/.ssh/id_ed25519 -N $git_pass
 ssh-add /home/$username/.ssh/id_ed25519
 echo "alias config='/usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username'" >> /home/$username/.bashrc
 echo ".cfg" >> .gitignore
