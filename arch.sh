@@ -62,6 +62,8 @@ useradd -m -G wheel $username
 echo root:$root_pass | chpasswd
 echo $username:$password | chpasswd
 
+sed "0,/# %wheel/{s/# %wheel/%wheel/}" /etc/sudoers
+
 pacman -Syu --noconfirm
 
 pacman -S grub efibootmgr --noconfirm
@@ -97,3 +99,5 @@ EOT
 umount -R /mnt
 
 echo "Install completed successfully"
+
+shutdown now
