@@ -2,7 +2,7 @@
 
 #echo "Please enter your desired root password:"
 #read -s root_pass
-read -sp "Please enter your desired root password: "
+read -sp "Please enter your desired root password: " root_pass
 
 echo "Please enter your desired username:"
 read username
