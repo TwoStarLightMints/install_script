@@ -12,7 +12,7 @@ echo
 
 read -p "Please enter the device name that will be used for partitioning: " device
 
-read -p "Is this debug? [y/n]" debug
+read -p "Is this debug? [y/n] " debug
 
 efi_partition="$device"1
 swap_partition="$device"2
@@ -62,7 +62,7 @@ useradd -m -G wheel $username
 echo root:$root_pass | chpasswd
 echo $username:$password | chpasswd
 
-sed "0,/# %wheel/{s/# %wheel/%wheel/}" /etc/sudoers
+sed -i "0,/# %wheel/{s/# %wheel/%wheel/}" /etc/sudoers
 
 pacman -Syu --noconfirm
 
