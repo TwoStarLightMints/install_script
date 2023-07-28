@@ -70,9 +70,7 @@ pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code xorg virtualbox-guest-utils openssh --noconfirm
-
-npm install -g pyright
+pacman -S qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code xorg virtualbox-guest-utils openssh go bash-language-server pcmanfm-gtk3 xdg-user-dirs --noconfirm
 
 systemctl enable NetworkManager.service
 systemctl enable ly.service
@@ -93,6 +91,9 @@ xargs -I{} mv {} .config-backup/{}
 
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
+
+npm install -g pyright
+xdg-user-dirs-update
 exit
 
 exit
