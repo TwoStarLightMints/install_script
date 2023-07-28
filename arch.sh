@@ -72,6 +72,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman -S qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship zellij npm gimp rustup rofi code xorg virtualbox-guest-utils openssh --noconfirm
 
+npm install -g pyright
+
 systemctl enable NetworkManager.service
 systemctl enable ly.service
 systemctl enable vboxservice.service
