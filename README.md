@@ -2,4 +2,3 @@
 My arch install script
 
 ##TODO:
-[X] 
