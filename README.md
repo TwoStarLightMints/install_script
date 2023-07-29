@@ -2,4 +2,4 @@
 My arch install script
 
 TODO:
-- [] 
+- [ ] 
