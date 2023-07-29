@@ -1,5 +1,5 @@
 # install_script
 My arch install script
 
-TODO:
-- [X] 
+##TODO:
+[X] 
