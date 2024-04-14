@@ -76,6 +76,8 @@ systemctl enable NetworkManager.service
 systemctl enable ly.service
 systemctl enable vboxservice.service
 
+npm install -g pyright
+
 su -l $username
 cd ~
 eval "$(ssh-agent)"
@@ -92,7 +94,6 @@ xargs -I{} mv {} .config-backup/{}
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username checkout
 /usr/bin/git --git-dir=/home/$username/.cfg/ --work-tree=/home/$username config --local status.showUntrackedFiles no
 
-npm install -g pyright
 xdg-user-dirs-update
 exit
 

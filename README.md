@@ -1,5 +1,6 @@
 # install_script
 My arch install script
 
-TODO:
-- [X] 
+## TODO:
+[ ] Add rustup install for rust toolchain
+[ ] Add clang to installed programs
