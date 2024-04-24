@@ -70,7 +70,7 @@ pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -S python-psutil qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship gimp rustup rofi code xorg virtualbox-guest-utils openssh go bash-language-server pcmanfm-gtk3 xdg-user-dirs htop --noconfirm
+pacman -S python-psutil qtile ly helix git alsa-utils libreoffice-still alacritty fish chromium ttf-hack-nerd starship gimp rustup rofi code xorg virtualbox-guest-utils openssh go bash-language-server pcmanfm-gtk3 xdg-user-dirs llvm htop --noconfirm
 
 systemctl enable NetworkManager.service
 systemctl enable ly.service
